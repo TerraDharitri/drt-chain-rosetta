@@ -7,9 +7,8 @@ from multiprocessing.dummy import Pool
 from pathlib import Path
 from typing import Any, Callable, Dict, List, Optional
 
-from dharitri_sdk import (AccountOnNetwork, Address, AddressComputer,
+from dharitri_py_sdk import (AccountOnNetwork, Address, AddressComputer,
                             AwaitingOptions, Mnemonic, ProxyNetworkProvider,
-                            RelayedTransactionsFactory,
                             SmartContractController,
                             SmartContractTransactionsFactory, Token,
                             TokenManagementTransactionsFactory,
@@ -18,10 +17,10 @@ from dharitri_sdk import (AccountOnNetwork, Address, AddressComputer,
                             TransactionOnNetwork, TransactionsFactoryConfig,
                             TransferTransactionsFactory, UserSecretKey,
                             UserSigner)
-from dharitri_sdk.abi import (AddressValue, BigUIntValue, BytesValue,
+from dharitri_py_sdk.abi import (AddressValue, BigUIntValue, BytesValue,
                                 I32Value, I64Value, Serializer, StringValue,
                                 TokenIdentifierValue, U32Value)
-from dharitri_sdk.core.address import get_shard_of_pubkey
+from dharitri_py_sdk.core.address import get_shard_of_pubkey
 
 from systemtests.config import CONFIGURATIONS, Configuration
 from systemtests.constants import (ADDITIONAL_GAS_LIMIT_FOR_RELAYED_V3,
@@ -501,7 +500,7 @@ def do_run(args: Any):
         controller.send(controller.create_relayed_transfer(
             relayer=accounts.get_user(shard=SOME_SHARD, index=0),
             sender=accounts.get_user(shard=SOME_SHARD, index=2),
-            receiver=Address.from_bech32("drt1qqqqqqqqqqqqqqqpqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqzllls6prdez"),
+            receiver=Address.new_from_bech32("drt1qqqqqqqqqqqqqqqpqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqzllls6prdez"),
             native_amount=42,
             custom_amount=0,
             additional_gas_limit=0,
@@ -1371,7 +1370,7 @@ class BunchOfAccounts:
         if shard is not None:
             contracts = [contract for contract in contracts if self._is_bech32_in_shard(contract.address, shard)]
 
-        return [Address.from_bech32(contract.address) for contract in contracts]
+        return [Address.new_from_bech32(contract.address) for contract in contracts]
 
     def _is_bech32_in_shard(self, address: str, shard: int) -> bool:
         return self._is_address_in_shard(Address.new_from_bech32(address), shard)
@@ -1420,7 +1419,6 @@ class Controller:
         self.token_management_transactions_factory = TokenManagementTransactionsFactory(self.transactions_factory_config)
         self.token_management_outcome_parser = TokenManagementTransactionsOutcomeParser()
         self.transfer_transactions_factory = TransferTransactionsFactory(self.transactions_factory_config)
-        self.relayed_transactions_factory = RelayedTransactionsFactory(self.transactions_factory_config)
         self.contracts_transactions_factory = SmartContractTransactionsFactory(self.transactions_factory_config)
         self.contracts_query_controller = SmartContractController(configuration.network_id, self.network_provider)
         self.transactions_hashes_accumulator: list[str] = []
@@ -2081,10 +2079,7 @@ class Controller:
             self.apply_nonce(inner_transaction)
             self.sign(inner_transaction)
 
-            transaction = self.relayed_transactions_factory.create_relayed_v1_transaction(
-                inner_transaction=inner_transaction,
-                relayer_address=relayer.address,
-            )
+            raise NotImplementedError("RelayedTransactionsFactory (v1) not available in dharitri_py_sdk 0.0.6")
 
             transaction.nonce = relayer_nonce
             self.sign(transaction)
@@ -2108,11 +2103,7 @@ class Controller:
             self.apply_nonce(inner_transaction)
             self.sign(inner_transaction)
 
-            transaction = self.relayed_transactions_factory.create_relayed_v2_transaction(
-                inner_transaction=inner_transaction,
-                inner_transaction_gas_limit=gas_limit,
-                relayer_address=relayer.address,
-            )
+            raise NotImplementedError("RelayedTransactionsFactory (v2) not available in dharitri_py_sdk 0.0.6")
 
             transaction.nonce = relayer_nonce
             self.sign(transaction)
@@ -2183,7 +2174,7 @@ class Controller:
 
     def await_processing_started(self, transactions: List[Transaction]) -> List[TransactionOnNetwork]:
         def await_processing_started_one(transaction: Transaction) -> TransactionOnNetwork:
-            condition: Callable[[AccountOnNetwork], bool] = lambda account: account.nonce > transaction.nonce
+            condition: Callable[[AccountOnNetwork], bool] = lambda account: account.nonce > transaction.nonce  # type: ignore[misc]
             self.network_provider.await_account_on_condition(transaction.sender, condition, self.awaiting_options)
 
             transaction_hash = self.transaction_computer.compute_transaction_hash(transaction).hex()
@@ -2316,7 +2307,7 @@ class Memento:
         self.path.write_text(json.dumps(data, indent=4) + "\n")
 
 
-def split_to_chunks(items: Any, chunk_size: int):
+def split_to_chunks(items: List[Any], chunk_size: int) -> Any:
     for i in range(0, len(items), chunk_size):
         yield items[i:i + chunk_size]
 

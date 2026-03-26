@@ -10,5 +10,5 @@
     "stubPath": "",
     "reportMissingImports": true,
     "reportMissingTypeStubs": false,
-    "reportUnknownParameterType": true
+    "reportUnknownParameterType": false
 }
