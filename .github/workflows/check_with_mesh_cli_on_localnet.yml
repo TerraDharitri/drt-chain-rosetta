@@ -1,0 +1,65 @@
+name: Check with Mesh CLI (localnet)
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  test-localnet:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/setup-python@v5
+        with:
+          python-version: 3.11
+
+      - uses: actions/checkout@v4
+
+      - name: Install dependencies
+        run: |
+          pipx install dharitri-sdk-cli --force
+          pip install -r ./requirements-dev.txt
+          curl -sSfL https://raw.githubusercontent.com/TerraDharitri/coinbase-mesh-cli/refs/heads/install-rename/scripts/install.sh | sh -s -- -b "$HOME/.local/bin"
+          echo "$HOME/.local/bin" >> $GITHUB_PATH
+
+      - name: Build
+        run: |
+          cd $GITHUB_WORKSPACE/cmd/rosetta && go build .
+          cd $GITHUB_WORKSPACE/systemtests && go build ./proxyToObserverAdapter.go
+
+      - name: Set up DharitrI localnet
+        run: |
+          mkdir -p ~/localnet && cd ~/localnet
+          drtpy localnet setup --configfile=${GITHUB_WORKSPACE}/systemtests/localnet.toml
+          
+          # Start the localnet and store the PID
+          nohup drtpy localnet start --configfile=${GITHUB_WORKSPACE}/systemtests/localnet.toml > localnet.log 2>&1 & echo $! > localnet.pid
+          sleep 60 # Allow time for the localnet to start
+
+      - name: Generate testdata (setup)
+        run: |
+          python3 ./systemtests/generate_testdata_on_network.py setup --network=localnet
+        env:
+          PYTHONPATH: .
+
+      - name: Generate testdata (run)
+        run: |
+          python3 ./systemtests/generate_testdata_on_network.py run --network=localnet
+          
+          # Allow the blocks that hold the sample transactions to become "final".
+          sleep 30
+        env:
+          PYTHONPATH: .
+
+      - name: check:data
+        run: |
+          python3 ./systemtests/check_with_mesh_cli.py --mode=data --network=localnet --shard=0
+        env:
+          PYTHONPATH: .
+
+      - name: Stop DharitrI localnet
+        if: success() || failure()
+        run: |
+          kill $(cat localnet.pid) || echo "Testnet already stopped"

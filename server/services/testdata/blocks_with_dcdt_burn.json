@@ -1,0 +1,50 @@
+[
+    {
+        "comment": "block with DCDT burn (of fungible)",
+        "miniBlocks": [
+            {
+                "transactions": [
+                    {
+                        "type": "normal",
+                        "hash": "29d734c1210d16ab8a796005156581a7b522701173bd8900ba5c5c9078cea4dd",
+                        "value": "0",
+                        "receiver": "drt1r69gk66fmedhhcg24g2c5kn2f2a5k4kvpr6jfw67dn2lyydd8cfsncd6w8",
+                        "sender": "drt1r69gk66fmedhhcg24g2c5kn2f2a5k4kvpr6jfw67dn2lyydd8cfsncd6w8",
+                        "logs": {
+                            "address": "drt1r69gk66fmedhhcg24g2c5kn2f2a5k4kvpr6jfw67dn2lyydd8cfsncd6w8",
+                            "events": [
+                                {
+                                    "address": "drt1r69gk66fmedhhcg24g2c5kn2f2a5k4kvpr6jfw67dn2lyydd8cfsncd6w8",
+                                    "identifier": "DCDTLocalBurn",
+                                    "topics": ["VEVTVC00ODRmYTE=", "", "Mg=="],
+                                    "data": null
+                                },
+                                {
+                                    "address": "drt1r69gk66fmedhhcg24g2c5kn2f2a5k4kvpr6jfw67dn2lyydd8cfsncd6w8",
+                                    "identifier": "completedTxEvent",
+                                    "topics": [
+                                        "Kdc0wSENFquKeWAFFWWBp7UicBFzvYkAulxckHjOpN0="
+                                    ],
+                                    "data": null
+                                }
+                            ]
+                        },
+                        "initiallyPaidFee": "111500000000000"
+                    }
+                ]
+            },
+            {
+                "transactions": [
+                    {
+                        "type": "unsigned",
+                        "hash": "64ad128f0982e363c94f5dcbc8328dfde07f44da3e3c40e7782c8dccccac3be9",
+                        "value": "2500000000000",
+                        "receiver": "drt1r69gk66fmedhhcg24g2c5kn2f2a5k4kvpr6jfw67dn2lyydd8cfsncd6w8",
+                        "sender": "drt1r69gk66fmedhhcg24g2c5kn2f2a5k4kvpr6jfw67dn2lyydd8cfsncd6w8",
+                        "isRefund": true
+                    }
+                ]
+            }
+        ]
+    }
+]

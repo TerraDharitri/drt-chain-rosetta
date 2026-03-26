@@ -1,0 +1,58 @@
+[
+    {
+        "comment": "block with multi DCDT transfer",
+        "miniBlocks": [
+            {
+                "transactions": [
+                    {
+                        "type": "normal",
+                        "hash": "996487dc3fdcc648c3989a74b32fd8b33339f788a6cfd757e1f80be933b441a9",
+                        "value": "0",
+                        "receiver": "drt1testnlersh4z0wsv8kjx39me4rmnvjkwu8dsaea7ukdvvc9z396qe2mapq",
+                        "sender": "drt1testnlersh4z0wsv8kjx39me4rmnvjkwu8dsaea7ukdvvc9z396qe2mapq",
+                        "logs": {
+                            "address": "drt1testnlersh4z0wsv8kjx39me4rmnvjkwu8dsaea7ukdvvc9z396qe2mapq",
+                            "events": [
+                                {
+                                    "address": "drt1testnlersh4z0wsv8kjx39me4rmnvjkwu8dsaea7ukdvvc9z396qe2mapq",
+                                    "identifier": "MultiDCDTNFTTransfer",
+                                    "topics": [
+                                        "VEVTVC1kYmM1YzA=",
+                                        "",
+                                        "ZA==",
+                                        "VEVTVC1kNjUyMjk=",
+                                        "",
+                                        "Mg==",
+                                        "gEnWOeWmmA0c0jkqvM5BApzadKFWNSOiAvCWQcwmGPg="
+                                    ],
+                                    "data": null
+                                },
+                                {
+                                    "address": "drt1testnlersh4z0wsv8kjx39me4rmnvjkwu8dsaea7ukdvvc9z396qe2mapq",
+                                    "identifier": "completedTxEvent",
+                                    "topics": [
+                                        "mWSH3D/cxkjDmJp0sy/YszM594imz9dX4fgL6TO0Qak="
+                                    ],
+                                    "data": null
+                                }
+                            ]
+                        },
+                        "initiallyPaidFee": "283000000000000"
+                    }
+                ]
+            },
+            {
+                "transactions": [
+                    {
+                        "type": "unsigned",
+                        "hash": "a18187de36c120cfc3e01203145490fab722f8fe52bcdc6688e435e2ccd1f934",
+                        "value": "16000000000000",
+                        "receiver": "drt1testnlersh4z0wsv8kjx39me4rmnvjkwu8dsaea7ukdvvc9z396qe2mapq",
+                        "sender": "drt1testnlersh4z0wsv8kjx39me4rmnvjkwu8dsaea7ukdvvc9z396qe2mapq",
+                        "isRefund": true
+                    }
+                ]
+            }
+        ]
+    }
+]

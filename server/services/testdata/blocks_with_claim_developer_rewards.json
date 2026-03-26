@@ -1,0 +1,112 @@
+[
+    {
+        "comment": "block with claim developer rewards",
+        "miniBlocks": [
+            {
+                "transactions": [
+                    {
+                        "type": "normal",
+                        "processingTypeOnSource": "BuiltInFunctionCall",
+                        "processingTypeOnDestination": "BuiltInFunctionCall",
+                        "hash": "e0cb3e108c4e04a6d2406d718c20f976b365de3d1dd0067fd2fae996f7c9cbd1",
+                        "nonce": 536,
+                        "round": 1092226,
+                        "epoch": 909,
+                        "value": "0",
+                        "receiver": "drt1qqqqqqqqqqqqqpgq2kndhnp65u9jvg79pz6luthf2tcfc9f6q6uqhmyfsm",
+                        "sender": "drt1tn62hjp72rznp8vq0lplva5csav6rccpqqdungpxtqz0g2hcq6uqc2zmmy",
+                        "gasPrice": 1000000000,
+                        "gasLimit": 8000000,
+                        "data": "Q2xhaW1EZXZlbG9wZXJSZXdhcmRz",
+                        "signature": "b8771fe3f0184bed47f002543f5302b93bfeace7cf1c3ef138522e4c53e162745359d4eb4fa2cf40036ebc1c4db9e8269ea5b81047aa6d9f6965c5792d84e40e",
+                        "sourceShard": 0,
+                        "destinationShard": 0,
+                        "miniblockType": "TxBlock",
+                        "miniblockHash": "2684c32382e5acd3912d8ae7adfa934e1950d24927f0b99baae6617182a1eae8",
+                        "logs": {
+                            "address": "drt1qqqqqqqqqqqqqpgq2kndhnp65u9jvg79pz6luthf2tcfc9f6q6uqhmyfsm",
+                            "events": [
+                                {
+                                    "address": "drt1qqqqqqqqqqqqqpgq2kndhnp65u9jvg79pz6luthf2tcfc9f6q6uqhmyfsm",
+                                    "identifier": "ClaimDeveloperRewards",
+                                    "topics": [
+                                        "AZ012mtA",
+                                        "XPSryD5QxTCdgH/D9naYh1mh4wEAG8mgJlgE9Cr4Brg="
+                                    ],
+                                    "data": null,
+                                    "additionalData": null
+                                },
+                                {
+                                    "address": "drt1qqqqqqqqqqqqqpgq2kndhnp65u9jvg79pz6luthf2tcfc9f6q6uqhmyfsm",
+                                    "identifier": "completedTxEvent",
+                                    "topics": [
+                                        "4Ms+EIxOBKbSQG1xjCD5drNl3j0d0AZ/0vrplvfJy9E="
+                                    ],
+                                    "data": null,
+                                    "additionalData": null
+                                }
+                            ]
+                        },
+                        "status": "success",
+                        "operation": "ClaimDeveloperRewards",
+                        "function": "ClaimDeveloperRewards",
+                        "initiallyPaidFee": "160685000000000"
+                    }
+                ]
+            },
+            {
+                "transactions": [
+                    {
+                        "type": "unsigned",
+                        "processingTypeOnSource": "MoveBalance",
+                        "processingTypeOnDestination": "MoveBalance",
+                        "hash": "7969b30a33e9d925cacda530a4afa74269cd4e366f0598486e23b70f5e10cf98",
+                        "nonce": 0,
+                        "round": 1092226,
+                        "epoch": 909,
+                        "value": "1774725000000",
+                        "receiver": "drt1tn62hjp72rznp8vq0lplva5csav6rccpqqdungpxtqz0g2hcq6uqc2zmmy",
+                        "sender": "drt1tn62hjp72rznp8vq0lplva5csav6rccpqqdungpxtqz0g2hcq6uqc2zmmy",
+                        "gasPrice": 1000000000,
+                        "previousTransactionHash": "e0cb3e108c4e04a6d2406d718c20f976b365de3d1dd0067fd2fae996f7c9cbd1",
+                        "originalTransactionHash": "e0cb3e108c4e04a6d2406d718c20f976b365de3d1dd0067fd2fae996f7c9cbd1",
+                        "originalSender": "drt1tn62hjp72rznp8vq0lplva5csav6rccpqqdungpxtqz0g2hcq6uqc2zmmy",
+                        "sourceShard": 0,
+                        "destinationShard": 0,
+                        "miniblockType": "SmartContractResultBlock",
+                        "miniblockHash": "8ba6961a4191dc4f42296eab4f68a56048fd257c943f4e787e31befb8b155d84",
+                        "status": "success",
+                        "operation": "transfer",
+                        "callType": "directCall",
+                        "options": 0
+                    },
+                    {
+                        "type": "unsigned",
+                        "processingTypeOnSource": "MoveBalance",
+                        "processingTypeOnDestination": "MoveBalance",
+                        "hash": "06f81486996225b597bc7ed89b4062cd895491b33b1e81f34205ef48272bd644",
+                        "nonce": 537,
+                        "round": 1092226,
+                        "epoch": 909,
+                        "value": "29185000000000",
+                        "receiver": "drt1tn62hjp72rznp8vq0lplva5csav6rccpqqdungpxtqz0g2hcq6uqc2zmmy",
+                        "sender": "drt1qqqqqqqqqqqqqpgq2kndhnp65u9jvg79pz6luthf2tcfc9f6q6uqhmyfsm",
+                        "gasPrice": 1000000000,
+                        "data": "QDZmNmI=",
+                        "previousTransactionHash": "e0cb3e108c4e04a6d2406d718c20f976b365de3d1dd0067fd2fae996f7c9cbd1",
+                        "originalTransactionHash": "e0cb3e108c4e04a6d2406d718c20f976b365de3d1dd0067fd2fae996f7c9cbd1",
+                        "sourceShard": 0,
+                        "destinationShard": 0,
+                        "miniblockType": "SmartContractResultBlock",
+                        "miniblockHash": "8ba6961a4191dc4f42296eab4f68a56048fd257c943f4e787e31befb8b155d84",
+                        "status": "success",
+                        "operation": "transfer",
+                        "isRefund": true,
+                        "callType": "directCall",
+                        "options": 0
+                    }
+                ]
+            }
+        ]
+    }
+]

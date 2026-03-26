@@ -1,0 +1,56 @@
+[
+    {
+        "comment": "block with DCDT transfer (fungible)",
+        "miniBlocks": [
+            {
+                "transactions": [
+                    {
+                        "type": "normal",
+                        "hash": "b35680324380e8fb4c954a26190159bfc7b55463497443163b1123a6407040a7",
+                        "value": "0",
+                        "receiver": "drt1spyavw0956vq68xj8y4tenjpq2wd5a9p2c6j8gsz7ztyrnpxrruqlqde3c",
+                        "sender": "drt1testnlersh4z0wsv8kjx39me4rmnvjkwu8dsaea7ukdvvc9z396qe2mapq",
+                        "logs": {
+                            "address": "drt1spyavw0956vq68xj8y4tenjpq2wd5a9p2c6j8gsz7ztyrnpxrruqlqde3c",
+                            "events": [
+                                {
+                                    "address": "drt1testnlersh4z0wsv8kjx39me4rmnvjkwu8dsaea7ukdvvc9z396qe2mapq",
+                                    "identifier": "DCDTTransfer",
+                                    "topics": [
+                                        "Uk9TRVRUQS0zYTJlZGY=",
+                                        "",
+                                        "Mg==",
+                                        "gEnWOeWmmA0c0jkqvM5BApzadKFWNSOiAvCWQcwmGPg="
+                                    ],
+                                    "data": null
+                                },
+                                {
+                                    "address": "drt1spyavw0956vq68xj8y4tenjpq2wd5a9p2c6j8gsz7ztyrnpxrruqlqde3c",
+                                    "identifier": "completedTxEvent",
+                                    "topics": [
+                                        "s1aAMkOA6PtMlUomGQFZv8e1VGNJdEMWOxEjpkBwQKc="
+                                    ],
+                                    "data": null
+                                }
+                            ]
+                        },
+                        "initiallyPaidFee": "119840000000000"
+                    }
+                ]
+            },
+            {
+                "transactions": [
+                    {
+                        "type": "unsigned",
+                        "hash": "1928a22522845ca82bdfebea4fd37b067d72a3219a4ccef9b523491ae8eb102b",
+                        "value": "1840000000000",
+                        "receiver": "drt1testnlersh4z0wsv8kjx39me4rmnvjkwu8dsaea7ukdvvc9z396qe2mapq",
+                        "sender": "drt1spyavw0956vq68xj8y4tenjpq2wd5a9p2c6j8gsz7ztyrnpxrruqlqde3c",
+                        "operation": "transfer",
+                        "isRefund": true
+                    }
+                ]
+            }
+        ]
+    }
+]
