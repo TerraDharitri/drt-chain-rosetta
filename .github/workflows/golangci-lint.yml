@@ -1,6 +1,9 @@
 name: golangci-lint
 on:
   pull_request:
+  push:
+    branches:
+      - dev-divesh
   workflow_dispatch:
 
 permissions:
